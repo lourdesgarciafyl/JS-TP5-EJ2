@@ -1,10 +1,3 @@
-let btnMostrar = document.querySelector(`#btnMostrar`)
-let btnGeneracion = document.querySelector(`#btnGeneracion`)
-let btnMayorMenor = document.querySelector(`#btnMayorMenor`)
-let formPersona = document.querySelector(`form`)
-console.log(formPersona)
-formPersona.addEventListener(`submit`, llenarForm)
-
 class Persona{
     constructor(nombre, edad, dni, sexo, peso, altura, anioDeNacimiento){
         this.nombre = nombre;
@@ -59,40 +52,41 @@ class Persona{
     }
     mostrarGeneracion(){
         if(this.anioDeNacimiento >= 1930 && this.anioDeNacimiento <= 1948){
-            return `
-            Generación: Silent Generation
-            Marco temporal: 1930 - 1940
-            Circunstancia histórica: Conflictos bélicos
-            Rasgo característico: Ansiedad
+            return `<ul>
+            <li>Generación: Silent Generation</li>
+            <li>Marco temporal: 1930 - 1940</li>
+            <li>Circunstancia histórica: Conflictos bélicos</li>
+            <li>Rasgo característico: Ansiedad</li>
+            </ul>
             `
         } else if(this.anioDeNacimiento >= 1949 && this.anioDeNacimiento <= 1968){
-            return `
-            Generación: Baby Boom
-            Marco temporal: 1949 - 1968
-            Circunstancia histórica: Paz y explosión demográfica
-            Rasgo característico: Ambición
-            `
+            return `<ul>
+            <li>Generación: Baby Boom</li>
+            <li>Marco temporal: 1949 - 1968</li>
+            <li>Circunstancia histórica: Paz y explosión demográfica</li>
+            <li>Rasgo característico: Ambición</li>
+            </ul>`
         } else if(this.anioDeNacimiento >= 1969 && this.anioDeNacimiento <= 1980){
-            return `
-            Generación: Generación X
-            Marco temporal: 1969 - 1980
-            Circunstancia histórica: Crisis del 73 y transición española
-            Rasgo característico: Obsesión por el éxito
-            `
+            return `<ul>
+            <li>Generación: Generación X</li>
+            <li>Marco temporal: 1969 - 1980</li>
+            <li>Circunstancia histórica: Crisis del 73 y transición española</li>
+            <li>Rasgo característico: Obsesión por el éxito</li>
+            </ul>`
         } else if(this.anioDeNacimiento >= 1981 && this.anioDeNacimiento <= 1993){
-            return `
-            Generación: Generación Y (Millenials)
-            Marco temporal: 1981 - 1993
-            Circunstancia histórica: Inicio de la digitalización
-            Rasgo característico: Frustración
-            `
+            return `<ul>
+            <li>Generación: Generación Y (Millenials)</li>
+            <li>Marco temporal: 1981 - 1993</li>
+            <li>Circunstancia histórica: Inicio de la digitalización</li>
+            <li>Rasgo característico: Frustración</li>
+            </ul>`
         } else if(this.anioDeNacimiento >= 1994 && this.anioDeNacimiento <= 2010){
-            return `
-            Generación: Generación Z
-            Marco temporal: 1994 - 2010
-            Circunstancia histórica: Expansión masiva de Internet
-            Rasgo característico: Irreverencia
-            `
+            return `<ul>
+            <li>Generación: Generación Z</li>
+            <li>Marco temporal: 1994 - 2010</li>
+            <li>Circunstancia histórica: Expansión masiva de Internet</li>
+            <li>Rasgo característico: Irreverencia</li>
+            </ul>`
         } else{
             return `No hay información sobre ese año.`
         }
@@ -105,50 +99,71 @@ class Persona{
         }
     }
     mostrarDatos(){
-        return `
-        Nombre: ${this.nombre}
-        Edad: ${this.edad} años
-        DNI: ${this.dni}
-        Sexo: ${this.sexo}
-        Peso: ${this.peso} kg
-        Altura: ${this.altura} cm
-        Año de nacimiento: ${this.anioDeNacimiento}
-        `
+        return `<ul>
+        <li>Nombre: ${this.nombre}</li>
+        <li>Edad: ${this.edad} años</li>
+        <li>DNI: ${this.dni}</li>
+        <li>Sexo: ${this.sexo}</li>
+        <li>Peso: ${this.peso} kg</li>
+        <li>Altura: ${this.altura} cm</li>
+        <li>Año de nacimiento: ${this.anioDeNacimiento}</li>
+        </ul>`
     }
 }
+let nombreApellido = document.getElementById(`nombreApellido`);
+//console.log(nombreApellido)
+let edad = document.getElementById(`edad`);
+//console.log(edad)
+let dni = document.getElementById(`dni`);
+//console.log(dni)
+let sexo = document.getElementById(`sexo`);
+//console.log(sexo)
+let peso = document.getElementById(`peso`);
+//console.log(peso)
+let altura = document.getElementById(`altura`);
+//console.log(altura)
+let anioNac = document.getElementById(`anio`);
+let btnMostrar = document.querySelector(`#btnMostrar`);
+let btnGeneracion = document.querySelector(`#btnGeneracion`);
+let btnMayorMenor = document.querySelector(`#btnMayorMenor`);
+let formPersona = document.querySelector(`form`);
+// console.log(formPersona)
+
+formPersona.addEventListener(`submit`, llenarForm)
 
 function llenarForm(e){
     e.preventDefault()
     //console.log(e)
-    let nombreApellido = document.getElementById(`nombreApellido`).value;
-    //console.log(nombreApellido)
-    let edad = document.getElementById(`edad`).value
-    //console.log(edad)
-    let dni = document.getElementById(`dni`).value
-    //console.log(dni)
-    let sexo = document.getElementById(`sexo`).value
-    //console.log(sexo)
-    let peso = document.getElementById(`peso`).value
-    //console.log(peso)
-    let altura = document.getElementById(`altura`).value
-    //console.log(altura)
-    let anioNac = document.getElementById(`anio`).value
-    //console.log(anioNac)
-    let nuevaPersona = new Persona(nombreApellido, edad, dni, sexo, peso, altura, anioNac)
+    let nuevaPersona = new Persona(
+        nombreApellido.value,
+        edad.value,
+        dni.value,
+        sexo.value,
+        peso.value,
+        altura.value,
+        anioNac.value
+    )
+    formPersona.reset()
+
+    let contenedorDatosMostrados = document.querySelector(`#contenedorDatosMostrados`);
+    contenedorDatosMostrados.className = `my-2 container`;
+    console.log(contenedorDatosMostrados)
+    contenedorDatosMostrados.children[0].children[0].innerHTML = `Persona: ${nuevaPersona.nombre}`
     
-    btnGeneracion.addEventListener(`click`, mostrarGeneracionUsuario)
-    function mostrarGeneracionUsuario(){
-        alert(nuevaPersona.mostrarGeneracion())
-    }
+    btnMostrar.addEventListener(`click`, () => mostrarDatosPersona(nuevaPersona));
+    btnGeneracion.addEventListener(`click`,() => mostrarGeneracionUsuario(nuevaPersona));
+    btnMayorMenor.addEventListener(`click`, () => mostrarMayorOMenor(nuevaPersona))
+}
 
-    btnMayorMenor.addEventListener(`click`, mostrarMayorOMenor)
-    function mostrarMayorOMenor(){
-        alert(nuevaPersona.esMayorDeEdad())
-    }
-
-    btnMostrar.addEventListener(`click`, mostrarDatosPersona)
-    function mostrarDatosPersona(){
-        alert(nuevaPersona.mostrarDatos())
-        formPersona.reset();
-    }
+function mostrarDatosPersona(nuevaPersona){
+    let divDatosMostrados = document.querySelector(`#divDatosMostrados`);
+    divDatosMostrados.innerHTML = nuevaPersona.mostrarDatos();
+} 
+function mostrarGeneracionUsuario(nuevaPersona){
+    let divParaGeneracion = document.querySelector(`#divDatosMostrados`);
+    divParaGeneracion.innerHTML = nuevaPersona.mostrarGeneracion();
+}
+function mostrarMayorOMenor(nuevaPersona){
+    let divParaEdad = document.querySelector(`#divDatosMostrados`);
+    divParaEdad.innerHTML = nuevaPersona.esMayorDeEdad();
 }
