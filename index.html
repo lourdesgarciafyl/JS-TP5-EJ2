@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,9 +30,10 @@
             class="form-control"
             type="text"
             id="nombreApellido"
-            placeholder="Juan Perez"
+            placeholder="Mariana Enriquez"
             minlength="5"
             maxlength="50"
+            required
           />
         </div>
         <div class="mb-3">
@@ -42,8 +43,9 @@
             type="number"
             id="edad"
             placeholder="30"
-            minlength="1"
-            maxlength="2"
+            minlength=1
+            maxlength="3"
+            required
           />
         </div>
         <div class="mb-3">
@@ -54,22 +56,20 @@
               id="dni"
               placeholder="41061228"
               minlength="7"
-              maxlength="9"
+              maxlength="8"
+              required
             />
           </div>
           <div class="mb-3">
-            <label class="form-label" for="sexo">Sexo</label>
-            <input
-              class="form-control"
-              type="text"
-              id="sexo"
-              placeholder="Mujer / Hombre"
-              minlength="5"
-              maxlength="6"
-            />
+            <label class="form-label" for="sexo">Género</label>
+            <select class="form-control" id="sexo">
+              <option value="">Selecciona una opción</option>
+              <option value="H">Hombre</option>
+              <option value="M">Mujer</option>
+            </select>
           </div>
           <div class="mb-3">
-            <label class="form-label" for="peso">Peso en kg</label>
+            <label class="form-label" for="peso">Peso (en kg)</label>
             <input
               class="form-control"
               type="number"
@@ -77,17 +77,17 @@
               placeholder="55"
               minlength="1"
               maxlength="3"
+              required
             />
           </div>
           <div class="mb-3">
-            <label class="form-label" for="altura">Altura en cm</label>
+            <label class="form-label" for="altura">Altura (en mts)</label>
             <input
               class="form-control"
-              type="number"
+              type="text"
               id="altura"
-              placeholder="155"
-              minlength="1"
-              maxlength="3"
+              placeholder="1,55"
+              required
             />
           </div>
           <div class="mb-3">
@@ -101,13 +101,21 @@
               maxlength="4"
               required
             />
-            <button class="btn btn-info mt-2" id="btnGeneracion">Mostrar generación</button>
-            <button class="btn btn-secondary mt-2" id="btnMayorMenor">¿Soy mayor de edad?</button>
           </div>
-          <div class="text-center">
-            <button class="btn btn-primary" id="btnMostrar">Mostrar todos los datos</button>
-          </div>
+          <button class="text-center btn btn-primary">Enviar</button>
+          <div class="alert alert-light d-none" role="alert" id="divParaAlert"></div>
       </form>
+
+      <section class="container d-none" id="contenedorDatosMostrados">
+        <article class="m-2">
+          <h3 class="ms-2">Persona:</h3>
+          <hr>
+          <button class="btn btn-primary" id="btnMostrar">Mostrar todos los datos</button>
+          <button class="btn btn-info mt-2" id="btnGeneracion">Mostrar generación</button>
+          <button class="btn btn-secondary mt-2" id="btnMayorMenor">¿Soy mayor de edad?</button>
+        <div id="divDatosMostrados"> </div>
+        </article>
+      </section>
     </main>
     <footer class="text-center text-light py-4">
       <p>&copy; Todos los derechos reservados</p>
@@ -117,6 +125,6 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
-    <script src="js/apps.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
